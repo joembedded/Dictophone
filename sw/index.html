@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<!-- DictoPhone ist eine kleine Diktier-App fuer Whatsapp, (C)JoEmbedded -->
+ <head>
+
+    <!-- WICHTIG: http://localhost/wrk/ai/dictophone/sw/index.html  -->
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/dictophone.css">
+    <script src="./js/dictophone.js" type="module" defer></script>
+
+    <title>DictoPhone</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="controls">
+            <button id="record-btn" class="recording-off">Aufnehmen</button>
+            <button id="correct-btn">Korrigieren</button>
+            <button id="whatsapp-btn">An WhatsApp</button>
+            <button id="copy-btn">Kopieren</button>
+            <button id="undo-btn">Zurück</button>
+            <button id="del-btn">&#x2715;</button>
+        </div>
+        <textarea id="output" inputmode="none" placeholder="Warte auf Eingabe..."></textarea>
+    </div>
+
+    <dialog id="msg-dialog">
+        <h3 id="msg-title">Titel</h3>
+        <p id="msg-text">Text</p>
+        <button id="msg-ok">OK</button>
+    </dialog>
+</body>
+
+</html>

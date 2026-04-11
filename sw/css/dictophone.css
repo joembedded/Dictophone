@@ -1,0 +1,189 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #0d0d0d;
+    color: #c8ffc8;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 10px 10px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 0;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+button {
+    padding: 7px 12px;
+    cursor: pointer;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: transparent;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+button:hover {
+    box-shadow: 0 0 8px currentColor;
+}
+
+button:disabled {
+    color: #555 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+#record-btn.recording-off {
+    color: #4dff4d;
+}
+#record-btn.recording-off:hover {
+    background: #4dff4d22;
+}
+
+#record-btn.recording-on {
+    color: #ff4444;
+    background: #ff444422;
+    box-shadow: 0 0 8px #ff4444;
+}
+
+#correct-btn {
+    color: #4db8ff;
+}
+#correct-btn:hover {
+    background: #4db8ff22;
+}
+
+#whatsapp-btn {
+    color: #25D366;
+}
+#whatsapp-btn:hover {
+    background: #25D36622;
+}
+
+#copy-btn {
+    color: #ffdd44;
+}
+#copy-btn:hover {
+    background: #ffdd4422;
+}
+
+#undo-btn {
+    color: #c8ffc8;
+}
+#undo-btn:hover {
+    background: #c8ffc822;
+}
+
+#del-btn {
+    color: #ff4444;
+    grid-column: 2;
+    justify-self: end;
+    margin-left: auto;
+}
+#del-btn:hover {
+    background: #ff444422;
+}
+
+#output {
+    width: 100%;
+    flex: 1;
+    min-height: 120px;
+    background: #000;
+    color: #4dff4d;
+    border: 1px solid #2a6b2a;
+    border-radius: 4px;
+    padding: 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    outline: none;
+    resize: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-shadow: inset 0 0 20px #00ff0010, 0 0 12px #00ff0018;
+    caret-color: #4dff4d;
+}
+
+#output::placeholder {
+    color: #2a6b2a;
+}
+
+#msg-dialog {
+    border: 1px solid #4dff4d;
+    border-radius: 6px;
+    background: #0d0d0d;
+    color: #c8ffc8;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 1.2rem 1.5rem;
+    min-width: 260px;
+    max-width: 90vw;
+}
+
+#msg-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#msg-dialog h3 {
+    margin: 0 0 0.6rem;
+}
+
+#msg-dialog p {
+    margin: 0 0 1rem;
+    white-space: pre-wrap;
+}
+
+#msg-dialog #msg-ok {
+    display: block;
+    margin-left: auto;
+    color: #4dff4d;
+}
+
+@media (min-width: 560px) {
+    .controls {
+        grid-template-columns: repeat(6, auto);
+    }
+    #del-btn {
+        grid-column: auto;
+        justify-self: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #del-btn {
+        margin-left: 0;
+    }
+    button {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+    }
+    #output {
+        min-height: calc(100dvh - 280px);
+        font-size: 1rem;
+    }
+}
