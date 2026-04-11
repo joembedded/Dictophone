@@ -288,8 +288,8 @@ output.addEventListener('keydown', (e) => {
 });
 
 const info = `Diktier-APP mit KI-Korrektur<br>
-Info: &nbsp; &nbsp; <a href='https://joembedded.de' target='_blank'>joembedded.de</a><br>
-(C)JoEmbedded`
-// showMsg("DictoPhone", info);
+Info: &nbsp; &nbsp; <a href='https://github.com/joembedded/Dictophone' target='_blank'>https://github.com/joembedded/Dictophone</a><br>
+(C)JoEmbedded - MIT-Lizenz`;
+ showMsg("DictoPhone", info);
 
 output.focus();

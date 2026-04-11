@@ -1,4 +1,4 @@
-# Diktafon
+# DiktoPhone
 
 > **Browser-basierte Diktier-App mit KI-Korrektur** — optimiert für Smartphone (Android)
 
@@ -21,6 +21,12 @@ Der Prompt ist standardmäßig auf *„geschäftsmäßig und nüchtern"* gestell
 kann aber auch freie Formatierungsanweisungen annehmen.
 
 ---
+
+## Live
+
+Live auf meinem Server (so lange, bis das bissl OpenAI-Guthaben weg ist):
+[https://joembedded.de/x3/dictophone](https://joembedded.de/x3/dictophone)
+
 
 ## Beispiele
 
@@ -128,7 +134,7 @@ sw/
 
 ## Lizenz
 
-MIT License — JoEmbedded
+MIT License — (C)JoEmbedded
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
