@@ -15,7 +15,7 @@ error_reporting(E_ALL);
 // Configuration
 // ACHTUNG: Der Liveserver WILL bei internen Aenderungen das File neu laden!
 
-$log = 0; // 0: Silent, 1: Logfile schreiben, 2: Log complete Reply
+$log = 1; // 0: Silent, 1: Logfile schreiben, 2: Log complete Reply
 
 $xlog = "correct";
 include_once __DIR__ . '/../php_tools/logfile.php';
@@ -103,5 +103,8 @@ $displayText = $correctedText;
 if (strlen($correctedText) > 120) {
     $displayText = substr($correctedText, 0, 120) . '... (' . strlen($correctedText) . ')';
 }
+
+// Zeichen < 32 escapen (außer Tab, LF, CR für lesbarkeit)
+$displayText = str_replace("\n", '\n', $displayText);
 
 log2file("$xlog: $displayText");
