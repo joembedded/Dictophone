@@ -63,9 +63,9 @@ Formatierungsanweisungen annehmen.
 DictoPhone formatiert Texte automatisch korrekt, lesbar und passend zur Textart.
 Direktive Steuerinfos lassen sich einfach im Diktat mitsprechen:
 
-**📧 Standard — geschäftliche Mail**
+**📧 Standard — geschäftliche Mail oder Chat**
 ```
-Bitte als kurze freundliche Mail: ich schaffe den Termin morgen nicht
+Ich schaffe den Termin nachmittag nicht
 und melde mich nächste Woche wieder.
 ```
 
