@@ -21,7 +21,10 @@
             <button id="whatsapp-btn">An WhatsApp</button>
             <button id="copy-btn">Kopieren</button>
             <button id="undo-btn">Zurück</button>
-            <button id="del-btn">&#x2715;</button>
+            <div class="btn-pair">
+                <button id="info-btn">(&#x2139;)</button>
+                <button id="del-btn">&#x2715;</button>
+            </div>
         </div>
         <textarea id="output" inputmode="none" placeholder="Warte auf Eingabe..."></textarea>
     </div>
@@ -31,6 +34,12 @@
         <p id="msg-text">Text</p>
         <button id="msg-ok">OK</button>
     </dialog>
+
+    <dialog id="spinner-dialog">
+        <h3 id="spinner-title">Titel</h3>
+        <p id="spinner-text">Text</p>
+    </dialog>
+
 </body>
 
 </html>

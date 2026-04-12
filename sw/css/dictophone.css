@@ -96,11 +96,24 @@ button:disabled {
     background: #c8ffc822;
 }
 
+.btn-pair {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-pair button {
+    flex: 1;
+}
+
+#info-btn {
+    color: #aaaaaa;
+}
+#info-btn:hover {
+    background: #aaaaaa22;
+}
+
 #del-btn {
     color: #ff4444;
-    grid-column: 2;
-    justify-self: end;
-    margin-left: auto;
 }
 #del-btn:hover {
     background: #ff444422;

@@ -20,7 +20,7 @@ recognition.lang = 'de-DE';
 recognition.continuous = false; // Nur SIngle läuft auf Handy vernünftig
 recognition.interimResults = true; // Macht aber auf Handy kein Sinn
 
-let isRecording = false; 
+let isRecording = false;
 let isCorrecting = false; // Verhindert Aufnahme während Korrektur
 
 function enabler() {
@@ -52,8 +52,8 @@ function stopRecording() {
 }
 
 const msgDialog = document.getElementById('msg-dialog');
-const msgTitle  = document.getElementById('msg-title');
-const msgText   = document.getElementById('msg-text');
+const msgTitle = document.getElementById('msg-title');
+const msgText = document.getElementById('msg-text');
 
 document.getElementById('msg-ok').addEventListener('click', () => {
     msgDialog.close();
@@ -62,7 +62,7 @@ document.getElementById('msg-ok').addEventListener('click', () => {
 
 function showMsg(title, ihtml) {
     msgTitle.textContent = title;
-    msgText.innerHTML  = ihtml;
+    msgText.innerHTML = ihtml;
     msgDialog.showModal();
 }
 
@@ -203,6 +203,7 @@ recordBtn.addEventListener('click', () => {
         recognition.start();
         isRecording = 1;
         setRecordText();
+        setOutputKeyboard('none');
     } else {
         recognition.stop();
         isRecording = 0;
@@ -260,6 +261,19 @@ document.getElementById('undo-btn').addEventListener('click', () => {
     }
 });
 
+document.getElementById('info-btn').addEventListener('click', () => {
+    const info = `Diktier-APP mit KI-Korrektur<br>
+<div style="display: inline;">'DictoPhone' ist ein kleines Tool, welches ich primär für mich selbst entwickelt habe,
+um schnell und unkompliziert Texte zu diktieren, aufzuhübschen, zu korrigieren und z.B. mit WhatsApp weiterzuverwenden oder in schnell in die Zwischenablage zu kopieren.<br>
+<small>Datenschutz: DictoPhone ist experimentelle Software. Zur Spracherkennung wird die Chrome-API verwendet, zur Korrektur OpenAI-API.
+Beide APIs laufen auf externen Servern, auf die ich keinen Einfluss habe. Mein Server speichert eine temporäre Logdatei mit den ersten paar Zeichen der korrigierten Texte (siehe 'correct.php').
+Für eigen Verwendung empfehle ich, das Projekt selbst zu hosten. Benötigt wird lediglich PHP. Das Projekt ist komplett frei auf meiner GitHub-Seite verfügbar.</small></div>
+
+Info: &nbsp; &nbsp; <a href='https://github.com/joembedded/Dictophone' target='_blank'>https://github.com/joembedded/Dictophone</a>
+Mail: &nbsp; &nbsp; <a href='mailto:joembedded@gmail.com>' target='_blank'>joembedded@gmail.com</a>
+<small>(C)JoEmbedded - MIT-Lizenz</small>`;
+    showMsg("DictoPhone", info);
+});
 
 document.getElementById('del-btn').addEventListener('click', () => {
     const start = output.selectionStart;
@@ -271,14 +285,17 @@ document.getElementById('del-btn').addEventListener('click', () => {
 });
 
 // -- fuers Output--
-output.addEventListener('click', () => {
-    if (output.inputMode !== 'text') {
-        output.inputMode = 'text';
-    } else {
-        output.inputMode = 'none';
+// 'text' oder 'none' (= Default)
+function setOutputKeyboard(mode) {
+    if (output.inputMode !== mode) {
+        output.inputMode = mode;
+        output.blur();
+        setTimeout(() => output.focus(), 100);
     }
-    output.blur();
-    setTimeout(() => output.focus(), 100);
+}
+
+output.addEventListener('click', () => {
+    setOutputKeyboard('text');
 });
 
 output.addEventListener('keydown', (e) => {
@@ -287,9 +304,5 @@ output.addEventListener('keydown', (e) => {
     }
 });
 
-const info = `Diktier-APP mit KI-Korrektur<br>
-Info: &nbsp; &nbsp; <a href='https://github.com/joembedded/Dictophone' target='_blank'>https://github.com/joembedded/Dictophone</a><br>
-(C)JoEmbedded - MIT-Lizenz`;
- showMsg("DictoPhone", info);
 
 output.focus();
