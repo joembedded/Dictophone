@@ -77,7 +77,7 @@ danke für deine Hilfe, ich habe mich sehr darüber gefreut.
 
 **✨ Kreativ — Gedicht**
 ```
-Formuliere das als kleines Gedicht für Paul: ich wünsche dir viel Glück
+Formuliere das als kleines Gedicht in 8 Zeilen für Paul: ich wünsche dir viel Glück
 für deinen neuen Anfang und hoffe, dass du deinen Weg findest.
 ```
 
