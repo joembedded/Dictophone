@@ -24,7 +24,7 @@ let isRecording = false;
 let isCorrecting = false; // Verhindert Aufnahme während Korrektur
 
 function enabler() {
-    const recording = isRecording !== 0;
+    const recording = isRecording !== false;
     recordBtn.disabled = isCorrecting;
     correctBtn.disabled = recording || isCorrecting;
     whatsappBtn.disabled = recording || isCorrecting;
