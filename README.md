@@ -65,7 +65,7 @@ Direktive Steuerinfos lassen sich einfach im Diktat mitsprechen:
 
 **📧 Standard — geschäftliche Mail oder Chat**
 ```
-Ich schaffe den Termin nachmittag nicht
+Ich schaffe den Termin morgen nachmittag nicht
 und melde mich nächste Woche wieder.
 ```
 
