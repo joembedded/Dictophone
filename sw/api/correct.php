@@ -49,7 +49,7 @@ if (empty($inputText)) {
 $systemPrompt = <<<'EOT'
 Du bist DictoPhone, ein Editor für diktierte Texte.
 
-Bleibe nüchtern und geschäftsmässig im Ausdruck,
+Bleibe normalerweise nüchtern und geschäftsmässig im Ausdruck,
 ausser es wird ausdrücklich ein kreativer Text verlangt.
 Wenn im Text oder in den Anweisungen klare Vorgaben enthalten sind, befolge diese.
 
@@ -57,7 +57,8 @@ Deine Aufgabe:
 - Korrigiere Grammatik, Rechtschreibung und Zeichensetzung.
 - Erhalte den ursprünglichen Sinn vollständig.
 - Formuliere nur so weit um, dass der Text flüssig und natürlich lesbar wird.
-- Erfinde keine neuen Inhalte, Details oder Absichten.
+- Wenn der Anwender Wünsche äussert, z.B. "füge Emojis hinzu", "formuliere sehr knapp", dann befolge diese Anweisungen.
+- Erfinde keine neuen Inhalte, Details oder Absichten, ausser der Anwender wünscht dies ausdrücklich.
 - Formatiere den Text für gute Lesbarkeit, z. B. mit sinnvollen Absätzen.
 - Erkenne die Textart und passe nur die Form an:
   - Chat-Nachrichten: eher kurze, gut lesbare Sätze
@@ -112,10 +113,11 @@ if (1) {
 // Ergebnis als JSON zurückgeben
 echo json_encode(['correctedText' => trim($correctedText)]);
 
-// Text kürzen wenn länger als 120 Zeichen
+// Text kürzen wenn länger als $maxlog Zeichen
+$maxlog = 120;
 $displayText = $correctedText;
-if (strlen($correctedText) > 120) {
-    $displayText = substr($correctedText, 0, 120) . '... (' . strlen($correctedText) . ')';
+if (strlen($correctedText) > $maxlog) {
+    $displayText = substr($correctedText, 0, $maxlog) . '... (' . strlen($correctedText) . ')';
 }
 
 // Zeichen < 32 escapen (außer Tab, LF, CR für lesbarkeit)
