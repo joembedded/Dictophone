@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -58,6 +60,7 @@ button:disabled {
 #record-btn.recording-off {
     color: #4dff4d;
 }
+
 #record-btn.recording-off:hover {
     background: #4dff4d22;
 }
@@ -71,6 +74,7 @@ button:disabled {
 #correct-btn {
     color: #4db8ff;
 }
+
 #correct-btn:hover {
     background: #4db8ff22;
 }
@@ -78,6 +82,7 @@ button:disabled {
 #whatsapp-btn {
     color: #25D366;
 }
+
 #whatsapp-btn:hover {
     background: #25D36622;
 }
@@ -85,6 +90,7 @@ button:disabled {
 #copy-btn {
     color: #ffdd44;
 }
+
 #copy-btn:hover {
     background: #ffdd4422;
 }
@@ -92,6 +98,7 @@ button:disabled {
 #undo-btn {
     color: #c8ffc8;
 }
+
 #undo-btn:hover {
     background: #c8ffc822;
 }
@@ -108,6 +115,7 @@ button:disabled {
 #info-btn {
     color: #aaaaaa;
 }
+
 #info-btn:hover {
     background: #aaaaaa22;
 }
@@ -115,6 +123,7 @@ button:disabled {
 #del-btn {
     color: #ff4444;
 }
+
 #del-btn:hover {
     background: #ff444422;
 }
@@ -176,10 +185,81 @@ button:disabled {
     color: #4dff4d;
 }
 
+#spinner-dialog {
+    border: 1px solid #4db8ff;
+    border-radius: 6px;
+    background: #0d0d0d;
+    color: #c8ffc8;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 1.2rem 1.5rem;
+    min-width: 260px;
+    max-width: 90vw;
+    text-align: center;
+}
+
+#spinner-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#spinner-dialog h3 {
+    margin: 0 0 0.6rem;
+    color: #4db8ff;
+}
+
+#spinner-dialog p {
+    margin: 0.4rem 0 0;
+}
+
+#spinner-dialog h3::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    animation: dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: '🌑';
+    }
+
+    10% {
+        content: '🌒';
+    }
+
+    20% {
+        content: '🌓';
+    }
+
+    30% {
+        content: '🌔';
+    }
+
+    40% {
+        content: '🌕';
+    }
+
+    50% {
+        content: '🌖';
+    }
+
+    60% {
+        content: '🌗';
+    }
+
+    70% {
+        content: '🌘';
+    }
+
+    80% {
+        content: '🌚';
+    }
+}
+
 @media (min-width: 560px) {
     .controls {
         grid-template-columns: repeat(6, auto);
     }
+
     #del-btn {
         grid-column: auto;
         justify-self: auto;
@@ -191,10 +271,12 @@ button:disabled {
     #del-btn {
         margin-left: 0;
     }
+
     button {
         padding: 12px 10px;
         font-size: 0.9rem;
     }
+
     #output {
         min-height: calc(100dvh - 280px);
         font-size: 1rem;

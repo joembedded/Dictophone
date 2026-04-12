@@ -55,6 +55,27 @@ const msgDialog = document.getElementById('msg-dialog');
 const msgTitle = document.getElementById('msg-title');
 const msgText = document.getElementById('msg-text');
 
+const spinnerDialog = document.getElementById('spinner-dialog');
+const spinnerTitle = document.getElementById('spinner-title');
+const spinnerText = document.getElementById('spinner-text');
+
+let _spinnerInterval = null;
+
+function showSpinner(title, text) {
+    spinnerTitle.textContent = title;
+    spinnerText.textContent = text;
+    spinnerDialog.showModal();
+    _spinnerInterval = setInterval(() => {
+        spinnerText.textContent += '.';
+    }, 1000);
+}
+
+function hideSpinner() {
+    clearInterval(_spinnerInterval);
+    _spinnerInterval = null;
+    spinnerDialog.close();
+}
+
 document.getElementById('msg-ok').addEventListener('click', () => {
     msgDialog.close();
     output.focus();
@@ -158,7 +179,7 @@ async function correctText() {
     historyStack.push(nowState);
 
     // Visuelles Feedback
-    output.value = "Korrigiere...\nBitte warten...";
+    showSpinner('Korrigiere...', 'Bitte warten.');
 
     const formData = new FormData();
     formData.append('text', originalText);
@@ -189,6 +210,7 @@ async function correctText() {
         console.error("Fehler beim API-Aufruf:", error);
         output.value = originalText;
     } finally {
+        hideSpinner();
         isCorrecting = false;
         enabler();
         output.focus();
@@ -263,10 +285,10 @@ document.getElementById('undo-btn').addEventListener('click', () => {
 document.getElementById('info-btn').addEventListener('click', () => {
     const info = `Diktier-APP mit KI-Korrektur<br>
 <div style="display: inline;">'DictoPhone' ist ein kleines Tool, welches ich primär für mich selbst entwickelt habe,
-um schnell und unkompliziert Texte zu diktieren, aufzuhübschen, zu korrigieren und z.B. mit WhatsApp weiterzuverwenden oder in schnell in die Zwischenablage zu kopieren.<br>
+um schnell und unkompliziert Texte zu diktieren, aufzuhübschen, zu korrigieren und z.B. mit WhatsApp weiterzuverwenden oder schnell in die Zwischenablage zu kopieren.<br>
 <small>Datenschutz: DictoPhone ist experimentelle Software. Zur Spracherkennung wird die Chrome-API verwendet, zur Korrektur OpenAI-API.
 Beide APIs laufen auf externen Servern, auf die ich keinen Einfluss habe. Mein Server speichert eine temporäre Logdatei mit den ersten paar Zeichen der korrigierten Texte (siehe 'correct.php').
-Für eigen Verwendung empfehle ich, das Projekt selbst zu hosten. Benötigt wird lediglich PHP. Das Projekt ist komplett frei auf meiner GitHub-Seite verfügbar.</small></div>
+Für eigene Verwendung empfehle ich, das Projekt selbst zu hosten. Benötigt wird lediglich PHP. Das Projekt ist komplett frei auf meiner GitHub-Seite verfügbar.</small></div>
 
 Info: &nbsp; &nbsp; <a href='https://github.com/joembedded/Dictophone' target='_blank'>https://github.com/joembedded/Dictophone</a>
 Mail: &nbsp; &nbsp; <a href='mailto:joembedded@gmail.com>' target='_blank'>joembedded@gmail.com</a>
