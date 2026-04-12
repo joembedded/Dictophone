@@ -271,6 +271,7 @@ Für eigen Verwendung empfehle ich, das Projekt selbst zu hosten. Benötigt wird
 
 Info: &nbsp; &nbsp; <a href='https://github.com/joembedded/Dictophone' target='_blank'>https://github.com/joembedded/Dictophone</a>
 Mail: &nbsp; &nbsp; <a href='mailto:joembedded@gmail.com>' target='_blank'>joembedded@gmail.com</a>
+Version: 0.1 (12.04.2026) <br>
 <small>(C)JoEmbedded - MIT-Lizenz</small>`;
     showMsg("DictoPhone", info);
 });
