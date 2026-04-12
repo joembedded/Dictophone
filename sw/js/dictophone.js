@@ -24,13 +24,13 @@ let isRecording = false;
 let isCorrecting = false; // Verhindert Aufnahme während Korrektur
 
 function enabler() {
-    const recording = isRecording !== false;
+    const buttonsDisabled = isRecording || isCorrecting;
     recordBtn.disabled = isCorrecting;
-    correctBtn.disabled = recording || isCorrecting;
-    whatsappBtn.disabled = recording || isCorrecting;
-    copyBtn.disabled = recording || isCorrecting;
-    undoBtn.disabled = recording || isCorrecting;
-    delBtn.disabled = recording || isCorrecting;
+    correctBtn.disabled = buttonsDisabled;
+    whatsappBtn.disabled = buttonsDisabled;
+    copyBtn.disabled = buttonsDisabled;
+    undoBtn.disabled = buttonsDisabled;
+    delBtn.disabled = buttonsDisabled;
 }
 
 function setRecordText() {
@@ -47,7 +47,7 @@ function setRecordText() {
 function stopRecording() {
     if (!isRecording) return;
     recognition.stop();
-    isRecording = 0;
+    isRecording = false;
     setRecordText();
 }
 
@@ -104,13 +104,13 @@ function keyWordReplace(text) {
 
 recognition.onerror = (event) => {
     console.error('[recognition error]', event.error);
-    isRecording = 0;
+    isRecording = false;
     setRecordText();
 };
 
 recognition.onend = () => {
     if (isRecording) {
-        isRecording = 0;
+        isRecording = false;
         setRecordText();
     }
 };
@@ -201,12 +201,12 @@ recordBtn.addEventListener('click', () => {
     output.focus();
     if (!isRecording) {
         recognition.start();
-        isRecording = 1;
+        isRecording = true;
         setRecordText();
         setOutputKeyboard('none');
     } else {
         recognition.stop();
-        isRecording = 0;
+        isRecording = false;
         setRecordText();
     }
 });
@@ -216,7 +216,6 @@ document.getElementById('whatsapp-btn').addEventListener('click', () => {
     if (!text) {
         showMsg('Hinweis', 'Nichts zum Teilen da!');
     } else {
-
         if (navigator.share) {
             navigator.share({
                 title: 'Text DictoPhone',
