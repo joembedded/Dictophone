@@ -1,8 +1,26 @@
 // Dictophone.js - Einfache Diktier-App mit Web Speech API
+const VERSION = '0.2 (12.04.2026)';
+
 
 // Browser-Kompatibilität prüfen (Chrome nutzt meist webkitPrefix)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (!SpeechRecognition) { document.addEventListener('DOMContentLoaded', () => showMsg('Fehler', 'Browser unterstützt Web Speech API nicht. Nutze Chrome/Edge/Android.')); }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    if (!navigator.mediaDevices || typeof navigator.mediaDevices.enumerateDevices !== 'function') {
+        showMsg('Fehler', 'Kein Zugriff auf Mediengeräte – Mikrofon nicht verfügbar.');
+        return;
+    }
+    try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const hasMic = devices.some(d => d.kind === 'audioinput');
+        if (!hasMic) {
+            showMsg('Fehler', 'Kein Mikrofon gefunden. Bitte ein Mikrofon anschließen.');
+        }
+    } catch (e) {
+        console.warn('[mic check]', e);
+    }
+});
 
 
 const recordBtn = document.getElementById('record-btn');
@@ -125,6 +143,7 @@ function keyWordReplace(text) {
 
 recognition.onerror = (event) => {
     console.error('[recognition error]', event.error);
+    showMsg('Fehler', `Spracherkennung fehlgeschlagen: '${event.error}'`);
     isRecording = false;
     setRecordText();
 };
@@ -292,7 +311,7 @@ Für eigene Verwendung empfehle ich, das Projekt selbst zu hosten. Benötigt wir
 
 Info: &nbsp; &nbsp; <a href='https://github.com/joembedded/Dictophone' target='_blank'>https://github.com/joembedded/Dictophone</a>
 Mail: &nbsp; &nbsp; <a href='mailto:joembedded@gmail.com>' target='_blank'>joembedded@gmail.com</a>
-Version: 0.1 (12.04.2026) <br>
+Version: ${VERSION}<br>
 <small>(C)JoEmbedded - MIT-Lizenz</small>`;
     showMsg("DictoPhone", info);
 });
