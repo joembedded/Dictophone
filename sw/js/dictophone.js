@@ -28,6 +28,7 @@ const correctBtn = document.getElementById('correct-btn');
 const whatsappBtn = document.getElementById('whatsapp-btn');
 const copyBtn = document.getElementById('copy-btn');
 const undoBtn = document.getElementById('undo-btn');
+const reloadBtn = document.getElementById('reload-btn');
 const delBtn = document.getElementById('del-btn');
 
 const output = document.getElementById('output');
@@ -48,6 +49,7 @@ function enabler() {
     whatsappBtn.disabled = buttonsDisabled;
     copyBtn.disabled = buttonsDisabled;
     undoBtn.disabled = buttonsDisabled;
+    reloadBtn.disabled = buttonsDisabled;
     delBtn.disabled = buttonsDisabled;
 }
 
@@ -323,6 +325,21 @@ document.getElementById('del-btn').addEventListener('click', () => {
 
     output.value = '';
     output.focus();
+});
+
+reloadBtn.addEventListener('click', () => {
+    const hasContent = output.value.trim().length > 0;
+    if (!hasContent) {
+        window.location.reload();
+        return;
+    }
+
+    const wantsReload = window.confirm('Seite wirklich neu laden?\n\nEs ist bereits Text vorhanden. Beim Neuladen kann ungespeicherter Inhalt verloren gehen.');
+    if (wantsReload) {
+        window.location.reload();
+    } else {
+        output.focus();
+    }
 });
 
 // -- fuers Output--
