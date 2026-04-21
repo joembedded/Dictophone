@@ -1,5 +1,5 @@
 // Dictophone.js - Einfache Diktier-App mit Web Speech API
-const VERSION = '1.3 (21.04.2026)';
+const VERSION = '1.4 (21.04.2026)';
 
 
 // Browser-Kompatibilität prüfen (Chrome nutzt meist webkitPrefix)
@@ -27,7 +27,7 @@ const recordBtn = document.getElementById('record-btn');
 const correctBtn = document.getElementById('correct-btn');
 const whatsappBtn = document.getElementById('whatsapp-btn');
 const copyBtn = document.getElementById('copy-btn');
-const undoBtn = document.getElementById('undo-btn');
+const undoBtn = document.getElementById('undo-btn'); // Nur ggfs. definiert
 const reloadBtn = document.getElementById('reload-btn');
 const delBtn = document.getElementById('del-btn');
 
@@ -48,7 +48,7 @@ function enabler() {
     correctBtn.disabled = buttonsDisabled;
     whatsappBtn.disabled = buttonsDisabled;
     copyBtn.disabled = buttonsDisabled;
-    undoBtn.disabled = buttonsDisabled;
+    if (undoBtn) undoBtn.disabled = buttonsDisabled;
     reloadBtn.disabled = buttonsDisabled;
     delBtn.disabled = buttonsDisabled;
 }
@@ -328,7 +328,7 @@ copyBtn.addEventListener('click', () => {
     output.focus();
 });
 
-document.getElementById('undo-btn').addEventListener('click', () => {
+undoBtn?.addEventListener('click', () => {
     output.focus();
     if (historyStack.length > 0) {
         const prevState = historyStack.pop();
