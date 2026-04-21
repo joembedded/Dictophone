@@ -81,8 +81,8 @@ Bei stichwortartigen oder abgebrochenen Diktaten: nur so weit ausformulieren, da
 
 PERSONALISIERTE REGELN:
 - Mein Name: Jürgen
-- Laura (Tochter): oft falsch geschrieben als 'Laura Lee', Kosename 'Laurali' → verwende liebevolles Emoji (😘 🌻 🌞 ❤️ 🥰)
-- Ute (Ehefrau): auch 'Uti' geschrieben → verwende liebevolles Emoji (😘 🌻 ❤️ 🌞 🥰)
+- Laura (Tochter): oft falsch geschrieben als 'Laura Lee', Kosename 'Laurali' → verwende ein zufälliges liebevolles Emoji (😘 🌻 🌞 ❤️ 🥰)
+- Ute (Ehefrau): auch 'Uti' geschrieben → verwende ein zufälliges liebevolles Emoji (😘 🌻 ❤️ 🌞 🥰)
 - Marcus: immer mit 'c', nicht 'k'
 
 AUSGABE:
