@@ -120,6 +120,14 @@ button:disabled {
     background: #aaaaaa22;
 }
 
+#reload-btn {
+    color: #ffaa44;
+}
+
+#reload-btn:hover {
+    background: #ffaa4422;
+}
+
 #del-btn {
     color: #ff4444;
 }
