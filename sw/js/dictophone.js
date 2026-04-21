@@ -1,5 +1,5 @@
 // Dictophone.js - Einfache Diktier-App mit Web Speech API
-const VERSION = '0.2 (12.04.2026)';
+const VERSION = '1.3 (21.04.2026)';
 
 
 // Browser-Kompatibilität prüfen (Chrome nutzt meist webkitPrefix)
@@ -78,6 +78,12 @@ const msgText = document.getElementById('msg-text');
 const spinnerDialog = document.getElementById('spinner-dialog');
 const spinnerTitle = document.getElementById('spinner-title');
 const spinnerText = document.getElementById('spinner-text');
+const confirmDialog = document.getElementById('confirm-dialog');
+const confirmTitle = document.getElementById('confirm-title');
+const confirmText = document.getElementById('confirm-text');
+const confirmOkBtn = document.getElementById('confirm-ok');
+const confirmCancelBtn = document.getElementById('confirm-cancel');
+
 
 let _spinnerInterval = null;
 
@@ -107,6 +113,34 @@ function showMsg(title, ihtml) {
     msgDialog.showModal();
 }
 
+
+
+function showConfirm(title, text, onConfirm) {
+    confirmTitle.textContent = title;
+    confirmText.textContent = text;
+
+    const handleConfirm = () => {
+        cleanup();
+        confirmDialog.close();
+        onConfirm();
+    };
+
+    const handleCancel = () => {
+        cleanup();
+        confirmDialog.close();
+        output.focus();
+    };
+
+    const cleanup = () => {
+        confirmOkBtn.removeEventListener('click', handleConfirm);
+        confirmCancelBtn.removeEventListener('click', handleCancel);
+    };
+
+    confirmOkBtn.addEventListener('click', handleConfirm);
+    confirmCancelBtn.addEventListener('click', handleCancel);
+
+    confirmDialog.showModal();
+}
 
 // ---- Recognition-Events ----
 function keyWordReplace(text) {
@@ -319,12 +353,19 @@ Version: ${VERSION}<br>
 });
 
 document.getElementById('del-btn').addEventListener('click', () => {
-    const start = output.selectionStart;
-    const nowState = { value: output.value, cursorPos: start };
-    historyStack.push(nowState);
+    if (!output.value) {
+        output.focus();
+        return;
+    }
 
-    output.value = '';
-    output.focus();
+    showConfirm('Text löschen?', 'Soll der gesamte Text wirklich gelöscht werden?', () => {
+        const start = output.selectionStart;
+        const nowState = { value: output.value, cursorPos: start };
+        historyStack.push(nowState);
+
+        output.value = '';
+        output.focus();
+    });
 });
 
 reloadBtn.addEventListener('click', () => {
