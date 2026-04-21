@@ -1,5 +1,5 @@
 // Dictophone.js - Einfache Diktier-App mit Web Speech API
-const VERSION = '1.4 (21.04.2026)';
+const VERSION = '1.5 (21.04.2026)';
 
 
 // Browser-Kompatibilität prüfen (Chrome nutzt meist webkitPrefix)
@@ -48,8 +48,8 @@ function enabler() {
     correctBtn.disabled = buttonsDisabled;
     whatsappBtn.disabled = buttonsDisabled;
     copyBtn.disabled = buttonsDisabled;
-    if (undoBtn) undoBtn.disabled = buttonsDisabled;
-    reloadBtn.disabled = buttonsDisabled;
+    undoBtn.disabled = buttonsDisabled;
+    if (reloadBtn) reloadBtn.disabled = buttonsDisabled;
     delBtn.disabled = buttonsDisabled;
 }
 
@@ -328,7 +328,7 @@ copyBtn.addEventListener('click', () => {
     output.focus();
 });
 
-undoBtn?.addEventListener('click', () => {
+undoBtn.addEventListener('click', () => {
     output.focus();
     if (historyStack.length > 0) {
         const prevState = historyStack.pop();
@@ -368,7 +368,7 @@ document.getElementById('del-btn').addEventListener('click', () => {
     });
 });
 
-reloadBtn.addEventListener('click', () => {
+reloadBtn?.addEventListener('click', () => {
     const hasContent = output.value.trim().length > 0;
     if (!hasContent) {
         window.location.reload();
