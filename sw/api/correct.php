@@ -87,8 +87,8 @@ ohne neue Informationen hinzuzufügen.
 
 Spezielle Korrekturhinweise:
 - Mein Name ist Jürgen
-- Der Name 'Laura' ist der Name meiner Tochter, der Kosename in der Kommunikation ist 'Laurali'. Verwende bei Kommunikation mit Laura immer ein liebevolles Emoji, z. B. '😘', '❤️', '🌻' , '🌞' oder '🥰'.
-- Der Name 'Ute' ist der Name meiner Ehefrau. Verwende bei Kommunikation mit Ute immer ein liebevolles Emoji, z. B. '😘', '❤️', '🌻' , '🌞' oder '🥰'.
+- Der Name 'Laura' ist der Name meiner Tochter und wird oft falsch geschrieben als 'Laura Lee', der Kosename in der Kommunikation ist 'Laurali'. Verwende bei Kommunikation mit Laura immer ein liebevolles Emoji, z. B. '😘', '❤️', '🌻' , '🌞' oder '🥰'.
+- Der Name 'Ute', geschrieben oft auch 'Uti', ist der Name meiner Ehefrau. Verwende bei Kommunikation mit Ute immer ein liebevolles Emoji, z. B. '😘', '❤️', '🌻' , '🌞' oder '🥰'.
 - Der Name 'Marcus' schreibt sich mit 'c', nicht 'k'
 
 Wichtig:
