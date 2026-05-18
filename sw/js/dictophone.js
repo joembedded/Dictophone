@@ -1,5 +1,5 @@
 // Dictophone.js - Einfache Diktier-App mit Web Speech API
-const VERSION = '1.5 (21.04.2026)';
+const VERSION = '1.6 (18.05.2026)';
 
 
 // Browser-Kompatibilität prüfen (Chrome nutzt meist webkitPrefix)
@@ -41,6 +41,7 @@ recognition.interimResults = true; // Macht aber auf Handy kein Sinn
 
 let isRecording = false;
 let isCorrecting = false; // Verhindert Aufnahme während Korrektur
+let askBeforeDelete = true;
 
 function enabler() {
     const buttonsDisabled = isRecording || isCorrecting;
@@ -288,7 +289,8 @@ recordBtn.addEventListener('click', () => {
     }
 });
 
-document.getElementById('whatsapp-btn').addEventListener('click', () => {
+whatsappBtn.addEventListener('click', () => {
+    askBeforeDelete = false;
     const text = document.getElementById('output').value.trim();
     if (!text) {
         showMsg('Hinweis', 'Nichts zum Teilen da!');
@@ -315,6 +317,7 @@ document.getElementById('correct-btn').addEventListener('click', correctText);
 
 
 copyBtn.addEventListener('click', () => {
+    askBeforeDelete = false;
     const selektierterText = output.value;
     if (!selektierterText) {
         showMsg('Hinweis', 'Nichts zum Kopieren da!');
@@ -358,13 +361,23 @@ document.getElementById('del-btn').addEventListener('click', () => {
         return;
     }
 
-    showConfirm('Text löschen?', 'Soll der gesamte Text wirklich gelöscht werden?', () => {
+    const clearOutput = () => {
         const start = output.selectionStart;
         const nowState = { value: output.value, cursorPos: start };
         historyStack.push(nowState);
 
         output.value = '';
         output.focus();
+    };
+
+    if (!askBeforeDelete) {
+        askBeforeDelete = true;
+        clearOutput();
+        return;
+    }
+
+    showConfirm('Text löschen?', 'Soll der gesamte Text wirklich gelöscht werden?', () => {
+        clearOutput();
     });
 });
 
